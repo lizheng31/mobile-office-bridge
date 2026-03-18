@@ -1,0 +1,15 @@
+{
+  "name": "mobile-office-bridge",
+  "version": "1.0.0",
+  "description": "小移办公机器人 ↔ OpenClaw 桥接服务",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "express": "^4.21.0",
+    "uuid": "^10.0.0"
+  }
+}
