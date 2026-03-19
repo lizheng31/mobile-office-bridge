@@ -63,6 +63,30 @@ ngrok http 8080
 curl http://localhost:8080/health
 ```
 
+## 可用性保障（Windows）
+
+项目已提供一套最小可用保障脚本：
+
+- `scripts/start-bridge.ps1`：启动桥接服务，并写入 `logs/bridge.log`
+- `scripts/start-frpc.ps1`：启动 FRP 客户端，并写入 `logs/frpc.log`
+- `scripts/watchdog.ps1`：检查 bridge `/health` 与 `frpc.exe`，异常时自动重启
+- `scripts/install-tasks.ps1`：安装计划任务
+
+安装计划任务：
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-tasks.ps1
+```
+
+任务说明：
+- `MobileOfficeBridge`：用户登录时启动 bridge
+- `MobileOfficeFrpc`：用户登录时启动 frpc
+- `MobileOfficeWatchdog`：每分钟巡检并自愈
+
+日志目录：
+- `logs/bridge.log`
+- `logs/frpc.log`
+- `logs/watchdog.log`
+
 ## .env 配置项
 
 | 变量 | 必填 | 说明 |
